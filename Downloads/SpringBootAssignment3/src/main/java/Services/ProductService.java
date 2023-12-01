@@ -11,19 +11,30 @@ import com.cts.ecommerceApplication.Repository.ProductRepository;
 @Service
 public class ProductService {
 	
-	 @Autowired
-	 private ProductRepository productRepository;
+	@Autowired
+    private ProductRepository productRepository;
+ 
+    // CRUD operations
+ 
+    public List<Product> listAllProducts() {
+        return productRepository.findAll();
+    }
+ 
+    public Optional<Product> getProductById(Long productId) {
+        return productRepository.findById(productId);
+    }
+ 
+    public Product saveProduct(Product product) {
+        return productRepository.save(product);
+    }
+ 
+    public void deleteProduct(Long productId) {
+        productRepository.deleteById(productId);
+    }
 
-	/* public List<Product> listAllProducts() {
-		 
-		 	List<Product> products=new ArrayList<>();
-		 	productRepository.findAll().forEach(products::add);
-	        return products;
-
-	    }
-
-	   
-*/
-	    // Other CRUD methods ...
+	public String getId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
